@@ -37,7 +37,7 @@ LinkedList::LinkedList() : head_(0)
 
 LinkedList::~LinkedList()
 { 
-	while (head_ == NULL)
+	while (head_ != NULL)
 		pop_back();
 }
 
@@ -137,19 +137,15 @@ void LinkedList::insert_at(int pos, int data)
 	Node* prev = NULL; 
 	int position = 0;
 
-	while (curr)
+	while (curr && position != pos)
 	{
-		if (position == pos)
-		{
-			prev->next = newNode;
-			newNode->next = curr;
-			return;
-		}
-
 		prev = curr;
 		curr = curr->next;
 		position++;
 	}
+	newNode->next = curr;
+	prev->next = newNode;
+	return;
 }
 
 int LinkedList::pop_at(int pos)
@@ -188,13 +184,26 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
-    return 0;
+	if (head_ == NULL)
+	{
+		return 0;
+	}
+
+	int len = 0;
+	Node* curr = head_;
+
+	while (curr)
+	{
+		len++;
+		curr = curr->next;
+	}
+	return len;
 }
 
 //*******************************************************************//
 // Queue stuff
 //*******************************************************************//
-Queue::Queue() 
+Queue::Queue() :front_(0), back_(0)
 {
 }
 
@@ -204,42 +213,131 @@ Queue::~Queue()
 
 void Queue::enqueue(int data)
 {   
+	Node* curr = new Node(data);
+
+	curr->next = NULL;
+
+	if (front_ == NULL)
+	{
+		front_ = curr;
+		back_ = front_;
+		return;
+	}
+	else
+	{
+
+		(back_)->next = curr;
+		back_ = curr;
+	}
+	
 }
 
 int Queue::dequeue()
 {
-    return 0;
+	int value = (front_)->data;
+
+	if (front_ == NULL)
+	{
+		return 0;
+	}
+	if (front_ == back_)
+	{
+		back_ = NULL;
+	}
+
+	Node* curr = front_;
+
+	front_ = curr->next;
+	delete curr;
+	return value;
 }
 
 size_t Queue::size()
 {
-    return 0;
+	if (front_ == NULL)
+	{
+		return 0;
+	}
+
+	int len = 0;
+	Node* curr = front_;
+
+	while (curr)
+	{
+		len++;
+		curr = curr->next;
+	}
+	return len;
 }
 
 //*******************************************************************//
 // Stack stuff
 //*******************************************************************//
-Stack::Stack()
+Stack::Stack() :top_(0)
 {
 
 }
 
 Stack::~Stack()
 {
+	/*while (top_ != NULL)
+	{
+		pop();
+	}*/
 }
 
 void Stack::push(int data)
 {
+	/*Node* newNode = new Node(data);
+	Node* prev = NULL;
+	if (top_ == NULL)
+	{
+		top_ = newNode;
+		return;
+	}
+	else
+	{
+		prev = top_;
+		top_ = newNode;
+		(top_)->next = prev;
+	}*/
+	
 }
 
 int Stack::pop()
 {
-    return 0;
+	/*if (top_ == NULL)
+	{
+		return 0;
+	}
+	
+	int value = 0;
+
+	Node* temp = top_;
+	top_ = temp->next;
+	delete temp;
+	return value;*/
+	return 0;
+	
 }
 
 size_t Stack::size()
 {
-    return 0;
+	/*if (top_ == NULL)
+	{
+		return 0;
+	}
+
+	int len = 0;
+	Node* curr = top_;
+
+	while (curr)
+	{
+		len++;
+		curr = curr->next;
+	}
+	return len;*/
+	return 0;
 }
 
 
@@ -247,6 +345,72 @@ size_t Stack::size()
 // Balanced parenthesis
 bool Brackets(const string& input)
 {
+	stack<char> a;
+	/*stack<char> b;
+	char t[10];
+
+	for (int i = 0; i < input.length(); i++)
+	{
+
+		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
+		{
+			a.push(input[i]);
+		}
+		else if (t[i] == ']' || t[i] == '}' || t[i] == ')' || t[i] == '<')
+		{
+			if (b.empty())
+			{
+				return false;
+			}
+			else
+			{
+				b.pop();
+			}
+				
+		}
+
+		if (input[i] == '['&&t[i] == ']')
+			return true;
+		else if (input[i] == '{'&&t[i] == '}')
+			return true;
+		else if (input[i] == '('&&t[i] == ')')
+			return true;
+		else if (input[i] == '<'&&t[i] == '>')
+			return true;
+		else
+			return false;
+	}*/
+
+	/*int count = 0;
+	for (int i = 0; i < input.size(); ++i)
+	{
+		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
+			++count;
+		else if (input[i] == ']' || input[i] == '}' || input[i] == ')' || input[i] == '>')
+			--count;
+		if (count < 0)
+			return false;
+	}
+
+	for (int i = 0; i < input.length(); i++)
+	{
+		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
+			a.push(input[i]);
+		else if (input[i] == ']' || input[i] == '}' || input[i] == ')' || input[i] == '>')
+		{
+			if (a.empty() || !(a.top() && input[i]))
+			{
+				return false;
+			}
+			else
+			a.pop();
+		}
+			
+		else
+			return false;
+		
+	}*/
+
     return true;
 }
 

@@ -36,14 +36,13 @@ int main()
     // part 1
     cout << "Part 1" << endl;
     LinkedList ll;
-    //ll.push_front(1);
-   // ll.push_back(1);
+    ll.push_back(1);
+	ll.push_front(2);
     cout << ll.size() << endl;
-    //cout << ll.pop_back() << endl;
-    //cout << ll.pop_front() << endl;
-    //cout << ll.pop_back() << endl;
+    cout << ll.pop_back() << endl;
+    cout << ll.pop_front() << endl;
+	cout << ll.pop_back() << endl;
     ll.insert_at(2, 10);
-	//cout << ll.pop_back() << endl;
     cout << ll.pop_at(0) << endl;
     cout << endl;
 
@@ -52,7 +51,9 @@ int main()
     Queue q;
     q.enqueue(20);
     q.enqueue(42);
+	cout << q.size() << endl;
     cout << q.dequeue() << endl;
+	cout << q.dequeue() << endl;
     cout << q.size() << endl;
     cout << endl;
 
@@ -61,13 +62,14 @@ int main()
     Stack s;
     s.push(46);
     s.push(8);
+	cout << s.size() << endl;
     cout << s.pop() << endl;
     cout << s.size() << endl;
     cout << endl;
 
     // part 4
     cout << "Part 4" << endl;
-    const char* input = "<>";
+    const char* input = "(<))";
     cout << Brackets(input) << endl;
     cout << endl;
 
