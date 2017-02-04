@@ -280,15 +280,15 @@ Stack::Stack() :top_(0)
 
 Stack::~Stack()
 {
-	/*while (top_ != NULL)
+	while (top_ != NULL)
 	{
 		pop();
-	}*/
+	}
 }
 
 void Stack::push(int data)
 {
-	/*Node* newNode = new Node(data);
+	Node* newNode = new Node(data);
 	Node* prev = NULL;
 	if (top_ == NULL)
 	{
@@ -300,13 +300,13 @@ void Stack::push(int data)
 		prev = top_;
 		top_ = newNode;
 		(top_)->next = prev;
-	}*/
+	}
 	
 }
 
 int Stack::pop()
 {
-	/*if (top_ == NULL)
+	if (top_ == NULL)
 	{
 		return 0;
 	}
@@ -316,14 +316,13 @@ int Stack::pop()
 	Node* temp = top_;
 	top_ = temp->next;
 	delete temp;
-	return value;*/
-	return 0;
+	return value;
 	
 }
 
 size_t Stack::size()
 {
-	/*if (top_ == NULL)
+	if (top_ == NULL)
 	{
 		return 0;
 	}
@@ -336,8 +335,7 @@ size_t Stack::size()
 		len++;
 		curr = curr->next;
 	}
-	return len;*/
-	return 0;
+	return len;
 }
 
 
