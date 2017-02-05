@@ -155,7 +155,7 @@ int LinkedList::pop_at(int pos)
 		return 0;
 	}
 
-	Node* prev = 0;
+	Node* prev = NULL;
 	Node* curr = head_;
 	int index = 0;
 
@@ -189,8 +189,8 @@ size_t LinkedList::size()
 		return 0;
 	}
 
-	int len = 0;
 	Node* curr = head_;
+	int len = 0;
 
 	while (curr)
 	{
@@ -209,6 +209,8 @@ Queue::Queue() :front_(0), back_(0)
 
 Queue::~Queue()
 {   
+	while (front_)
+		dequeue();
 }
 
 void Queue::enqueue(int data)
@@ -315,6 +317,9 @@ int Stack::pop()
 
 	Node* temp = top_;
 	top_ = temp->next;
+
+	value = temp->data;
+
 	delete temp;
 	return value;
 	
@@ -327,8 +332,8 @@ size_t Stack::size()
 		return 0;
 	}
 
-	int len = 0;
 	Node* curr = top_;
+	int len = 0;
 
 	while (curr)
 	{
@@ -388,6 +393,24 @@ bool Brackets(const string& input)
 // Query machine, hits
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
-	
+	map<int, int> a;
+
+	for (int i = 0; i < queries.size(); i++)
+	{
+		a[queries[i]] = NULL;
+	}
+
+	for (int i = 0; i < data.size(); i++)
+	{
+		if (a.find(data[i]) != a.end())
+		{
+			a[data[i]]++;
+		}
+	}
+
+	for (int i = 0; i < queries.size(); i++)
+	{
+		results.push_back(a[queries[i]]);
+	}
 
 }
