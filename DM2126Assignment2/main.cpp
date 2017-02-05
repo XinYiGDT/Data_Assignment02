@@ -69,14 +69,14 @@ int main()
 
     // part 4
     cout << "Part 4" << endl;
-    const char* input = "(<))";
+	const char* input = "()()[]<>{{[{}]}}";
     cout << Brackets(input) << endl;
     cout << endl;
 
 
     // part 5
     cout << "Part 5" << endl;
-    int dataArray[] = {1, 4, 5, 6, 9, 1, 1, 4};
+    int dataArray[] = {1, 2, 3, 4, 3, 2, 2, 6};
     int queryArray[] = {1, 2, 3};
 
     vector<int> data(dataArray, dataArray + sizeof(dataArray) / sizeof(dataArray[0]));

@@ -24,7 +24,7 @@ using std::queue;
  *  \brief     DM2126 Assignment 2
  *  \details   Submit the whole solution, but only this file will be used to grade
  *  \author    <Lim Xin Yi>
- *  \date      2016 
+ *  \date      <1/2/2017> 
  *  \note      <163935T>
  */
 
@@ -344,75 +344,50 @@ size_t Stack::size()
 bool Brackets(const string& input)
 {
 	stack<char> a;
-	/*stack<char> b;
-	char t[10];
-
+	
 	for (int i = 0; i < input.length(); i++)
 	{
-
-		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
+		if (input[i] == '(' || input[i] == '{' || input[i] == '[' || input[i] == '<')
 		{
 			a.push(input[i]);
 		}
-		else if (t[i] == ']' || t[i] == '}' || t[i] == ')' || t[i] == '<')
-		{
-			if (b.empty())
-			{
-				return false;
-			}
-			else
-			{
-				b.pop();
-			}
-				
-		}
-
-		if (input[i] == '['&&t[i] == ']')
-			return true;
-		else if (input[i] == '{'&&t[i] == '}')
-			return true;
-		else if (input[i] == '('&&t[i] == ')')
-			return true;
-		else if (input[i] == '<'&&t[i] == '>')
-			return true;
 		else
-			return false;
-	}*/
-
-	/*int count = 0;
-	for (int i = 0; i < input.size(); ++i)
-	{
-		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
-			++count;
-		else if (input[i] == ']' || input[i] == '}' || input[i] == ')' || input[i] == '>')
-			--count;
-		if (count < 0)
-			return false;
-	}
-
-	for (int i = 0; i < input.length(); i++)
-	{
-		if (input[i] == '[' || input[i] == '{' || input[i] == '(' || input[i] == '<')
-			a.push(input[i]);
-		else if (input[i] == ']' || input[i] == '}' || input[i] == ')' || input[i] == '>')
 		{
-			if (a.empty() || !(a.top() && input[i]))
+			if (a.size() == 0)
 			{
 				return false;
 			}
+			char top = a.top();
+			if (input[i] == ')')
+			{
+				if (top != '(')
+					return false;
+			}
+			else if (input[i] == ']')
+			{
+				if (top != '[')
+					return false;
+			}
+			else if (input[i] == '}')
+			{
+				if (top != '{')
+					return false;
+			}
 			else
+			{
+				if (top != '<')
+					return false;
+			}
 			a.pop();
 		}
-			
-		else
-			return false;
-		
-	}*/
+	}
 
-    return true;
+		return a.size() == 0;
 }
 
 // Query machine, hits
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
+	
+
 }
